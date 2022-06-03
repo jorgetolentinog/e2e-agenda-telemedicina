@@ -1,6 +1,11 @@
 # Agenda E2E
 
-Probar flujo oneclick
+### Instalar
+```
+npm ci
+```
+
+### Ejecutar prueba de flujo oneclick
 
 ```
 npm run test:oneclick
