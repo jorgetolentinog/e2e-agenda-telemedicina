@@ -1,13 +1,13 @@
 const { Builder } = require("selenium-webdriver");
 const { ServiceBuilder } = require("selenium-webdriver/chrome");
-const { HomeView } = require("./view/home");
-const { LoginView } = require("./view/login");
-const { SearchView } = require("./view/search");
-const { ProfessionalView } = require("./view/professional");
-const { FormView } = require("./view/form");
-const { OneclickView } = require("./view/oneclick");
-const { TransbankView } = require("./view/transbank");
-const { AppointmentView } = require("./view/appointment");
+const { HomePage } = require("./pageobject/home");
+const { LoginPage } = require("./pageobject/login");
+const { SearchPage } = require("./pageobject/search");
+const { ProfessionalPage } = require("./pageobject/professional");
+const { FormPage } = require("./pageobject/form");
+const { OneclickPage } = require("./pageobject/oneclick");
+const { TransbankPage } = require("./pageobject/transbank");
+const { AppointmentPage } = require("./pageobject/appointment");
 
 const URL_AGENDA = "http://agndweb-dev.s3-website-us-east-1.amazonaws.com/";
 
@@ -15,30 +15,30 @@ async function run() {
   const driver = new Builder().forBrowser("chrome").build();
   await driver.get(URL_AGENDA);
 
-  await HomeView(driver, async (action) => {
+  await HomePage(driver, async (action) => {
     await action.selectTelemedicine();
   });
 
-  await LoginView(driver, async (action) => {
+  await LoginPage(driver, async (action) => {
     await action.writeRut();
     await action.submit();
   });
 
-  await SearchView(driver, async (action) => {
+  await SearchPage(driver, async (action) => {
     await action.waitForLoad();
     await action.writeSearch();
     await action.waitForResult();
     await action.selectFirstResult();
   });
 
-  await ProfessionalView(driver, async (action) => {
+  await ProfessionalPage(driver, async (action) => {
     await action.waitForLoad();
     await action.selectFirstAvailableDay();
     await action.waitForResultOfAvailableDay();
     await action.selectFirstAvailableTime();
   });
 
-  await FormView(driver, async (action) => {
+  await FormPage(driver, async (action) => {
     await action.waitForLoad();
     await action.writeEmail();
     await action.writePhone();
@@ -48,7 +48,7 @@ async function run() {
     await action.submit();
   });
 
-  await OneclickView(driver, async (action) => {
+  await OneclickPage(driver, async (action) => {
     await action.waitForLoad();
     await action.selectCreditCard();
     await action.writeCardNumber();
@@ -58,7 +58,7 @@ async function run() {
     await action.submit();
   });
 
-  await TransbankView(driver, async (action) => {
+  await TransbankPage(driver, async (action) => {
     await action.waitForLoad();
     await action.writeRut();
     await action.writePassword();
@@ -66,7 +66,7 @@ async function run() {
     await action.continue();
   });
 
-  await AppointmentView(driver, async (action) => {
+  await AppointmentPage(driver, async (action) => {
     await action.waitForLoad();
     await action.hideModal();
   });

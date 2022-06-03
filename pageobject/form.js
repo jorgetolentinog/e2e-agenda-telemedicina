@@ -1,6 +1,6 @@
 const { until, By } = require("selenium-webdriver");
 
-async function FormView(driver, callback) {
+async function FormPage(driver, callback) {
   this.waitForLoad = async () => {
     await driver.wait(
       until.elementLocated(By.xpath("//input[contains(@name, 'email')]"))
@@ -50,4 +50,4 @@ async function FormView(driver, callback) {
   await callback(this);
 }
 
-module.exports = { FormView };
+module.exports = { FormPage };

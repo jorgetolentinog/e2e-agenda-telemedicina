@@ -1,6 +1,6 @@
 const { until, By } = require("selenium-webdriver");
 
-async function AppointmentView(driver, callback) {
+async function AppointmentPage(driver, callback) {
   this.waitForLoad = async () => {
     await driver.wait(
       until.elementLocated(
@@ -18,4 +18,4 @@ async function AppointmentView(driver, callback) {
   await callback(this);
 }
 
-module.exports = { AppointmentView };
+module.exports = { AppointmentPage };

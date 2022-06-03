@@ -1,6 +1,6 @@
 const { until, By } = require("selenium-webdriver");
 
-async function OneclickView(driver, callback) {
+async function OneclickPage(driver, callback) {
   this.waitForLoad = async () => {
     await driver.wait(
       until.elementLocated(By.xpath("//button[contains(., 'Crédito')]"))
@@ -48,4 +48,4 @@ async function OneclickView(driver, callback) {
   await callback(this);
 }
 
-module.exports = { OneclickView };
+module.exports = { OneclickPage };

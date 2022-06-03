@@ -1,6 +1,6 @@
 const { until, By } = require("selenium-webdriver");
 
-async function LoginView(driver, callback) {
+async function LoginPage(driver, callback) {
   this.writeRut = async () => {
     await driver
       .findElement(By.xpath("//input[contains(@name, 'RUT')]"))
@@ -18,4 +18,4 @@ async function LoginView(driver, callback) {
   await callback(this);
 }
 
-module.exports = { LoginView };
+module.exports = { LoginPage };

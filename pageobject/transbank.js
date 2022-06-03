@@ -1,6 +1,6 @@
 const { until, By } = require("selenium-webdriver");
 
-async function TransbankView(driver, callback) {
+async function TransbankPage(driver, callback) {
   this.waitForLoad = async () => {
     await driver.wait(
       until.elementLocated(By.xpath("//input[contains(@name, 'rut')]"))
@@ -34,4 +34,4 @@ async function TransbankView(driver, callback) {
   await callback(this);
 }
 
-module.exports = { TransbankView };
+module.exports = { TransbankPage };

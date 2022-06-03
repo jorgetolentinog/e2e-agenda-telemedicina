@@ -1,6 +1,6 @@
 const { until, By } = require("selenium-webdriver");
 
-async function ProfessionalView(driver, callback) {
+async function ProfessionalPage(driver, callback) {
   this.waitForLoad = async () => {
     await driver.wait(
       until.elementLocated(
@@ -36,4 +36,4 @@ async function ProfessionalView(driver, callback) {
   await callback(this);
 }
 
-module.exports = { ProfessionalView };
+module.exports = { ProfessionalPage };

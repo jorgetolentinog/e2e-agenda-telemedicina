@@ -1,6 +1,6 @@
 const { until, By } = require("selenium-webdriver");
 
-async function SearchView(driver, callback) {
+async function SearchPage(driver, callback) {
   this.waitForLoad = async () => {
     await driver.wait(
       until.elementLocated(By.xpath("//input[contains(@name, 'buscar')]"))
@@ -32,4 +32,4 @@ async function SearchView(driver, callback) {
   await callback(this);
 }
 
-module.exports = { SearchView };
+module.exports = { SearchPage };
