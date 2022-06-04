@@ -1,4 +1,5 @@
 const { until, By } = require("selenium-webdriver");
+const { tracking } = require("../common/pageobject/tracking");
 
 async function HomePage(driver, callback) {
   this.selectTelemedicine = async () => {
@@ -7,7 +8,7 @@ async function HomePage(driver, callback) {
       .click();
   };
 
-  await callback(this);
+  await callback(tracking("Home", this));
 }
 
 module.exports = { HomePage };

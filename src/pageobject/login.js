@@ -1,4 +1,6 @@
 const { until, By } = require("selenium-webdriver");
+const { tracking } = require("../common/pageobject/tracking");
+const { DRIVER_WAIT_TIMEOUT } = require("../../config");
 
 async function LoginPage(driver, callback) {
   this.writeRut = async () => {
@@ -11,11 +13,11 @@ async function LoginPage(driver, callback) {
     const submit = await driver.findElement(
       By.xpath("//button[contains(., 'Continuar')]")
     );
-    await driver.wait(until.elementIsEnabled(submit));
+    await driver.wait(until.elementIsEnabled(submit), DRIVER_WAIT_TIMEOUT);
     await submit.click();
   };
 
-  await callback(this);
+  await callback(tracking("Login", this));
 }
 
 module.exports = { LoginPage };

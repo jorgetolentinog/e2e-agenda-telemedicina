@@ -1,12 +1,11 @@
 # Agenda E2E
 
-### Instalar
+### Desarrollo
+
 ```
+// Para instalar
 npm ci
-```
 
-### Ejecutar prueba de flujo oneclick
-
-```
-npm run test:oneclick
+// Para ejecutar
+node ./bin/index.js
 ```
