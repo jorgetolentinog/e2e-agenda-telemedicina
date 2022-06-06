@@ -12,4 +12,4 @@ node ./index.js
 
 ### Screenshot
 
-<img src="./img/cli-screenshot.png" alt="CLI Screenshot" style="width:300px;"/>
+<img src="./img/cli-screenshot.png" alt="CLI Screenshot" style="width:350px;"/>
