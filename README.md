@@ -7,5 +7,7 @@
 npm ci
 
 // Para ejecutar
-node ./bin/index.js
+node ./index.js
 ```
+
+![CLI Screenshot](./img/cli-screenshot.png)
