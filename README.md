@@ -10,4 +10,6 @@ npm ci
 node ./index.js
 ```
 
-![CLI Screenshot](./img/cli-screenshot.png)
+### Screenshot
+
+<img src="./img/cli-screenshot.png" alt="CLI Screenshot" style="max-width:300px;"/>
