@@ -1,12 +1,12 @@
 {
-  "name": "agenda",
-  "version": "1.0.0",
-  "scripts": {
-    "test:oneclick": "node oneclick.js"
-  },
+  "name": "e2e-cas-agenda",
   "author": "Jorge Tolentino",
+  "version": "0.0.1",
+  "main": "./index.js",
   "dependencies": {
     "chromedriver": "^101.0.0",
+    "inquirer": "^8.2.4",
+    "nanospinner": "^1.1.0",
     "selenium-webdriver": "^4.2.0"
   }
 }

@@ -1,9 +1,12 @@
 const { until, By } = require("selenium-webdriver");
+const { tracking } = require("../common/pageobject/tracking");
+const { DRIVER_WAIT_TIMEOUT } = require("../../config");
 
 async function TransbankPage(driver, callback) {
   this.waitForLoad = async () => {
     await driver.wait(
-      until.elementLocated(By.xpath("//input[contains(@name, 'rut')]"))
+      until.elementLocated(By.xpath("//input[contains(@name, 'rut')]")),
+      DRIVER_WAIT_TIMEOUT
     );
   };
 
@@ -31,7 +34,7 @@ async function TransbankPage(driver, callback) {
       .click();
   };
 
-  await callback(this);
+  await callback(tracking("Transbank", this));
 }
 
 module.exports = { TransbankPage };

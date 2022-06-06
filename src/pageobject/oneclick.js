@@ -1,9 +1,12 @@
 const { until, By } = require("selenium-webdriver");
+const { tracking } = require("../common/pageobject/tracking");
+const { DRIVER_WAIT_TIMEOUT } = require("../../config");
 
 async function OneclickPage(driver, callback) {
   this.waitForLoad = async () => {
     await driver.wait(
-      until.elementLocated(By.xpath("//button[contains(., 'Crédito')]"))
+      until.elementLocated(By.xpath("//button[contains(., 'Crédito')]")),
+      DRIVER_WAIT_TIMEOUT
     );
   };
 
@@ -35,17 +38,21 @@ async function OneclickPage(driver, callback) {
 
   this.confirmEmail = async () => {
     await driver
-      .findElement(By.xpath("//span[contains(., 'Es mi correo')]"))
+      .findElement(
+        By.xpath("//*[contains(text(), 'Es mi correo')]//parent::label")
+      )
       .click();
   };
 
   this.submit = async () => {
-    await driver
-      .findElement(By.xpath("//button[contains(., 'Inscribir')]"))
-      .click();
+    const submit = await driver.findElement(
+      By.xpath("//button[contains(., 'Inscribir')]")
+    );
+    await driver.wait(until.elementIsEnabled(submit), DRIVER_WAIT_TIMEOUT);
+    await submit.click();
   };
 
-  await callback(this);
+  await callback(tracking("Oneclick", this));
 }
 
 module.exports = { OneclickPage };

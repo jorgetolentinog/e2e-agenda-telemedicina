@@ -11,8 +11,12 @@ const { AppointmentPage } = require("./pageobject/appointment");
 
 const URL_AGENDA = "http://agndweb-dev.s3-website-us-east-1.amazonaws.com/";
 
-async function run() {
-  const driver = new Builder().forBrowser("chrome").build();
+async function schedule(value) {
+  const driver = new Builder()
+    .forBrowser("chrome")
+    .setChromeService(new ServiceBuilder(require("chromedriver").path))
+    .build();
+
   await driver.get(URL_AGENDA);
 
   await HomePage(driver, async (action) => {
@@ -26,9 +30,9 @@ async function run() {
 
   await SearchPage(driver, async (action) => {
     await action.waitForLoad();
-    await action.writeSearch();
-    await action.waitForResult();
-    await action.selectFirstResult();
+    await action.writeSearch({ text: value.professional });
+    await action.waitForFirstProfessionalResult();
+    await action.selectFirstProfessionalResult();
   });
 
   await ProfessionalPage(driver, async (action) => {
@@ -66,10 +70,13 @@ async function run() {
     await action.continue();
   });
 
-  await AppointmentPage(driver, async (action) => {
+  const reservaId = await AppointmentPage(driver, async (action) => {
     await action.waitForLoad();
     await action.hideModal();
+    return await action.getAppointmentId();
   });
+
+  return reservaId;
 }
 
-run();
+module.exports = { schedule };
