@@ -7,5 +7,9 @@
 npm ci
 
 // Para ejecutar
-node ./bin/index.js
+node ./index.js
 ```
+
+### Screenshot
+
+<img src="./img/cli-screenshot.png" alt="CLI Screenshot" style="width:350px;"/>
